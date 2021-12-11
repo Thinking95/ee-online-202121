@@ -1,4 +1,4 @@
-package com.jdc.online.entity;
+package com.jdc.online.jpa.entity;
 
 import java.io.Serializable;
 
@@ -8,11 +8,7 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.SequenceGenerator;
 
-import lombok.Data;
-
 @Entity
-@SequenceGenerator(name = "course_seq", allocationSize = 1, initialValue = 1000)
-@Data
 public class Course implements Serializable{
 
 	/**
@@ -21,11 +17,13 @@ public class Course implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = SEQUENCE, generator = "course_seq")
+	@GeneratedValue(strategy = SEQUENCE)
+	@SequenceGenerator(name = "course_seq")
 	private int id;
 	private String name;
 	private String description;
 	private int fees;
+	
 	public int getId() {
 		return id;
 	}
@@ -53,6 +51,6 @@ public class Course implements Serializable{
 	
 	
 	
-	
+
 
 }
